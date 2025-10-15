@@ -1,5 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
 nav {
-    background-color: #FFFFFF;
+    background-color: #88D0E5;
 }
 
 nav ul {
@@ -17,7 +26,8 @@ nav ul li {
     position: relative;
     padding: 14px 16px;
     text-align: center;
-    border : 1px solid #ccc;
+    background-color : #88D0E5;
+    border : 1px solid #000000;
 }
 
 nav ul li ul {
@@ -39,15 +49,26 @@ nav ul li ul li {
     float : none;
     width : 100%;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
+}
+
+footer{
+    min-height: 50px;
+    background-color: #7ABDE5;
+    text-align: center;
+    padding: 5px 0;
+    border-top: 1px solid #000000;
+    width : 100%;
 }
 
 .header-top {
+    min-height : 50px;
     display: flex;
     justify-content: space-around;
     background-color: #FFFFFF;
     padding:5px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #000000;
+    background-color : #7ABDE5;
 }
 
 .volga-text {
@@ -66,7 +87,7 @@ nav ul li ul li {
 .search-bar{
     padding: 6px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     width: 300px;
     vertical-align: middle;
 }
@@ -96,16 +117,24 @@ nav ul li ul li {
 a {
     text-decoration: none;
     color: #000000;
+    display: block;
+}
+
+main{
+    flex: 1;
+    background-color: #95E4E5;
 }
 
 .book-list{
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin : 10px
 }
 
 .book-item{
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
+    background-color:#FFFFFF;
     padding: 10px;
-    width: 200px;;
+    width: 200px;
 }
