@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Volga Contact</title>
+        <title>Volga Profile</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="Images/tempIcon.png" type="image/png">
     </head>
@@ -40,26 +40,26 @@
             </nav>
         </header>
         <main>
-            <h1>Contact Us!</h1>
-            <section>
-                <h2>Get in Touch</h2>
-                <p>If you have any questions, suggestions, or just want to say hello, feel free to reach out to us. We value your feedback and look forward to hearing from you!</p>
-            </section>
-            <section>
-                <h2>Contact Form</h2>
-                <form action="#" method="post">
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name" required><br><br>
-                    
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-                    
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
-                    
-                    <input type="submit" value="Submit">
-                </form>
-            </section>
+            <h2>User Cart</h2>
+            <div class ="cart-container">
+                <aside>
+                    <h2>Items in Your Cart</h2>
+                    <div class="book-list">
+                        <div class="book-item">
+                            <h3>Book Title 1</h3>
+                            <p>Author: Author Name 1</p>
+                            <p>Price: $10.99</p>
+                            <button class="remove-button">Remove</button>
+                        </div>
+                    </div>
+                </aside>
+                <aside>
+                    <h2>Cart Summary</h2>
+                    <p>Total Items: 1</p>
+                    <p>Total Price: $10.99</p>
+                    <button class="checkout-button">Proceed to Checkout</button>
+                </aside>
+            </div>
         </main>
         <footer>
             <p>&copy; 2025 Volga. All rights reserved.</p>

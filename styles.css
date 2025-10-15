@@ -138,3 +138,17 @@ main{
     padding: 10px;
     width: 200px;
 }
+
+.profile-icon-large {
+    height: 175px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.cart-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px;
+}
