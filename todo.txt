@@ -1,0 +1,8 @@
+add keywords meta element to each page
+add description meta element to each page
+add a figure element
+add a figcaption element
+add a summary element
+add a details element
+add an article element
+verify that html/css code is valid
