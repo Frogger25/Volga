@@ -1,4 +1,1 @@
-add a summary element
-add a details element
-add an article element
 verify that html/css code is valid
