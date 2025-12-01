@@ -38,6 +38,24 @@ $(document).ready(function () {
         $("#invalidEmail").text("");
     })
 
+    // First/Last name should not contain numbers
+    $('#first-name, #last-name').on('focusout', function () {
+        var val = $(this).val() || '';
+        var id = $(this).attr('id');
+        var spanId = (id === 'first-name') ? '#invalidFirstName' : '#invalidLastName';
+        if (val.match(/\d/)) {
+            $(spanId).text('Name cannot contain numbers');
+        } else {
+            $(spanId).text('');
+        }
+    });
+
+    $('#first-name, #last-name').on('focus', function () {
+        var id = $(this).attr('id');
+        var spanId = (id === 'first-name') ? '#invalidFirstName' : '#invalidLastName';
+        $(spanId).text('');
+    })
+
     // On submit check required inputs (.notEmpty) and email format
     $("#regForm").on('submit', function (e) {
         var error = false;
@@ -83,6 +101,12 @@ $(document).ready(function () {
             error = true;
         }
 
+        // first and last name should not contain digits
+        var firstNameVal = $.trim($('#first-name').val());
+        var lastNameVal = $.trim($('#last-name').val());
+        if (firstNameVal.match(/\d/)) { $("#invalidFirstName").text('Name cannot contain numbers'); error = true; }
+        if (lastNameVal.match(/\d/)) { $("#invalidLastName").text('Name cannot contain numbers'); error = true; }
+
         // password checks
         var pwd = $.trim($('#password').val());
         var pwdConfirm = $.trim($('#confirm-password').val());
@@ -112,7 +136,8 @@ $(document).ready(function () {
         } else {
             // Luhn check
             function luhnCheck(num) {
-                var sum = 0; var alt = false;
+                var sum = 0; 
+                var alt = false;
                 for (var i = num.length - 1; i >= 0; i--) {
                     var n = parseInt(num.charAt(i), 10);
                     if (alt) {
