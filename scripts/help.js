@@ -1,15 +1,32 @@
 $(document).ready(function () {
     function showHelp($el, msg) {
-        var $help = $el.siblings('.help').first();
+        // Prefer a help element uniquely tied to this input (by id)
+        var id = $el.attr('id');
+        var $help = $();
+        if (id) {
+            $help = $('#help-' + id);
+        }
         if (!$help || $help.length === 0) {
             $help = $('<span>').addClass('help').css({display: 'block', color: '#666', 'font-size': '0.9em'});
-            $el.after($help);
+            if (id) $help.attr('id', 'help-' + id);
+            // Insert after the invalid span for this field if present, otherwise after the input
+            var $invalid = $el.nextAll('.invalid').first();
+            if ($invalid && $invalid.length) {
+                $invalid.after($help);
+            } else {
+                $el.after($help);
+            }
         }
         $help.text(msg);
     }
 
     function clearHelp($el) {
-        var $help = $el.siblings('.help').first();
+        var id = $el.attr('id');
+        var $help = $();
+        if (id) $help = $('#help-' + id);
+        if (!$help || $help.length === 0) {
+            $help = $el.nextAll('.help').first();
+        }
         if ($help && $help.length) $help.text('');
     }
 
