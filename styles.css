@@ -167,3 +167,55 @@ main{
     vertical-align: middle;
     margin-bottom: 10px;
 }
+
+.register-form{
+    max-width: 420px;
+    margin: 20px auto;
+    padding: 18px;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: left;
+}
+.register-form label{
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"]{
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.register-button, .action-button{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    background-color: #0077aa;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+.register-button:hover, .action-button:hover{
+    background-color: #005f84;
+}
+.invalid{
+    color: #c82333;
+    font-size: 0.9em;
+    margin-left: 6px;
+    display: block;
+    margin-top: 4px;
+}
+.help{
+    color: #666;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 4px;
+}

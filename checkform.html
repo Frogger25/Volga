@@ -1,0 +1,106 @@
+<html>
+<head>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(document).ready(function () {
+
+  // -------------------------------------------
+  // Check email when focus leaves email element
+  // -------------------------------------------
+  $('#email').on('focusout', function () {
+    if  ($(this).val().match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) 
+    {
+      $("#invalidEmail").text("");
+    }
+    else 
+    {
+      $("#invalidEmail").text("Invalid email");
+    }
+  });
+
+  // -------------------------------
+  // Clear email error span on focus
+  // -------------------------------
+  $('#email').on('focus', function () {
+    $("#invalidEmail").text("");
+  })
+
+  // ------------------------------------------
+  // Check all form elements on form submission
+  // ------------------------------------------
+  $("#regForm").on('submit', function (e) 
+  {
+    // error variable to check if there are Errors
+    var error = false
+  
+    // Count to check each input
+    var count = 0
+
+    $("input.notEmpty").each(function () 
+    {
+      // If the value at the input has nothing in the text field
+      if ($("input:eq(" + count + ")").val() === "") 
+      {
+        // Place text in span[n]
+        $(".invalid:eq(" + count + ")").text("Missing Input *")
+        error = true
+      }
+      else 
+      { 
+        // If there text, then replace span with empty string
+        error = false // If there are no errors change error to NE
+      }
+      count++
+    })
+  
+    if (error == true) 
+    {
+      e.preventDefault()
+    } 
+    else 
+    {
+      alert("Your Form Has Been Submitted")
+    }
+  })
+  
+  $("#regForm").on('reset', function (e) 
+  {
+    $(".invalid").text("")
+  })
+
+})
+</script>
+</head>
+
+<body>
+<form id="regForm" name="regForm" action="javascript:void(0)">
+  
+  <p>
+  <label for="firstName">First Name: </label>
+  <input type="text" id="firstName" name="firstName" class="notEmpty">
+  <span class="invalid" id="invalidFirstName"></span>
+  </p>
+  
+  <p>
+  <label for="lastName">Last Name: </label>
+  <input type="text" id="lastName" name="lastName" class="notEmpty">
+  <span class="invalid" id="invalidLastName"></span>
+  </p>
+
+  <p>
+  <label for="email">Email: </label>
+  <input type="text" id="email" name="email" class="notEmpty">
+  <span class="invalid" id="invalidEmail"></span>
+  </p>
+
+  <p>
+  <input type="submit" value="Submit">
+  <input type="reset">
+  </p>
+</form>
+</body>
+
+</html>
