@@ -8,6 +8,11 @@
         <title>Volga About</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="Images/tempIcon.png" type="image/png">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+        <script src="scripts/form.js"></script>
+        <script src="scripts/help.js"></script>
     </head>
     <body>
         <header>
@@ -44,7 +49,7 @@
         <main>
             <section class="register-section">
                 <h2>Create an Account</h2>
-                <form id="regForm" action="javascript:void(0)" method="post" class="register-form">
+                <form id="regForm" action="submit_registration.html" method="post" class="register-form">
                     <label for="first-name">First name:</label>
                     <input type="text" id="first-name" name="first-name" class="notEmpty" required>
                     <span class="invalid" id="invalidFirstName"></span>
@@ -57,6 +62,133 @@
                     <input type="email" id="email" name="email" class="notEmpty" required>
                     <span class="invalid" id="invalidEmail"></span>
 
+                    <label for="confirm-email">Confirm email:</label>
+                    <input type="email" id="confirm-email" name="confirm-email" class="notEmpty" required>
+                    <span class="invalid" id="invalidConfirmEmail"></span>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="notEmpty" required>
+                    <span class="invalid" id="invalidPassword"></span>
+
+                    <label for="confirm-password">Confirm password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="notEmpty" required>
+                    <span class="invalid" id="invalidConfirmPassword"></span>
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" class="notEmpty" required>
+                    <span class="invalid" id="invalidAddress"></span>
+
+                    <label for="address2">Address 2 (optional):</label>
+                    <input type="text" id="address2" name="address2">
+                    <span class="invalid" id="invalidAddress2"></span>
+
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" class="notEmpty" required>
+                    <span class="invalid" id="invalidCity"></span>
+
+                    <label for="state">State:</label>
+                    <select id="state" name="state" class="notEmpty" required>
+                        <option value="">-- Select State --</option>
+                        <option value="AL">AL</option>
+                        <option value="AK">AK</option>
+                        <option value="AZ">AZ</option>
+                        <option value="AR">AR</option>
+                        <option value="CA">CA</option>
+                        <option value="CO">CO</option>
+                        <option value="CT">CT</option>
+                        <option value="DE">DE</option>
+                        <option value="FL">FL</option>
+                        <option value="GA">GA</option>
+                        <option value="HI">HI</option>
+                        <option value="ID">ID</option>
+                        <option value="IL">IL</option>
+                        <option value="IN">IN</option>
+                        <option value="IA">IA</option>
+                        <option value="KS">KS</option>
+                        <option value="KY">KY</option>
+                        <option value="LA">LA</option>
+                        <option value="ME">ME</option>
+                        <option value="MD">MD</option>
+                        <option value="MA">MA</option>
+                        <option value="MI">MI</option>
+                        <option value="MN">MN</option>
+                        <option value="MS">MS</option>
+                        <option value="MO">MO</option>
+                        <option value="MT">MT</option>
+                        <option value="NE">NE</option>
+                        <option value="NV">NV</option>
+                        <option value="NH">NH</option>
+                        <option value="NJ">NJ</option>
+                        <option value="NM">NM</option>
+                        <option value="NY">NY</option>
+                        <option value="NC">NC</option>
+                        <option value="ND">ND</option>
+                        <option value="OH">OH</option>
+                        <option value="OK">OK</option>
+                        <option value="OR">OR</option>
+                        <option value="PA">PA</option>
+                        <option value="RI">RI</option>
+                        <option value="SC">SC</option>
+                        <option value="SD">SD</option>
+                        <option value="TN">TN</option>
+                        <option value="TX">TX</option>
+                        <option value="UT">UT</option>
+                        <option value="VT">VT</option>
+                        <option value="VA">VA</option>
+                        <option value="WA">WA</option>
+                        <option value="WV">WV</option>
+                        <option value="WI">WI</option>
+                        <option value="WY">WY</option>
+                    </select>
+                    <span class="invalid" id="invalidState"></span>
+
+                    <label for="zip">Zip code:</label>
+                    <input type="text" id="zip" name="zip" class="notEmpty" required>
+                    <span class="invalid" id="invalidZip"></span>
+
+                    <h3>Payment Information</h3>
+                    <label for="card-type">Card type:</label>
+                    <select id="card-type" name="card-type" class="notEmpty" required>
+                        <option value="">-- Select Card Type --</option>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">MasterCard</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                    </select>
+                    <span class="invalid" id="invalidCardType"></span>
+
+                    <label for="card-number">Card number:</label>
+                    <input type="text" id="card-number" name="card-number" class="notEmpty" required>
+                    <span class="invalid" id="invalidCardNumber"></span>
+
+                    <label for="card-holder">Card holder name:</label>
+                    <input type="text" id="card-holder" name="card-holder" class="notEmpty" required>
+                    <span class="invalid" id="invalidCardHolder"></span>
+
+                    <label for="exp-month">Expiration month:</label>
+                    <select id="exp-month" name="exp-month" class="notEmpty" required>
+                        <option value="">Month</option>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                        <option value="9">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <span class="invalid" id="invalidExpMonth"></span>
+
+                    <label for="exp-year">Expiration year:</label>
+                    <select id="exp-year" name="exp-year" class="notEmpty" required>
+                        <option value="">Year</option>
+                    </select>
+                    <span class="invalid" id="invalidExpYear"></span>
+
                     <button type="submit" class="register-button">Register</button>
                     <button type="reset" id="clear" class="register-button">Clear</button>
                 </form>
@@ -65,10 +197,5 @@
         <footer>
             <p>&copy; 2025 Volga. All rights reserved.</p>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
-        <script src="scripts/form.js"></script>
-        <script src="scripts/help.js"></script>
     </body>
 </html>

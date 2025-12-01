@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    // Displays message when email is clicked
-    $("#email").click(function () {
-    	// Your jQuery goes here
-    })
     function showHelp($el, msg) {
         var $help = $el.siblings('.help').first();
         if (!$help || $help.length === 0) {
@@ -37,5 +33,33 @@ $(document).ready(function () {
     }).on('blur', function () {
         clearHelp($(this));
     });
+
+    // Confirm email
+    $('#confirm-email').on('focus', function () {
+        showHelp($(this), 'Re-enter the email address to confirm.');
+    }).on('blur', function () { clearHelp($(this)); });
+
+    // Password and confirm password
+    $('#password').on('focus', function () {
+        showHelp($(this), 'Password should be at least 8 characters.');
+    }).on('blur', function () { clearHelp($(this)); });
+
+    $('#confirm-password').on('focus', function () {
+        showHelp($(this), 'Re-enter the password for confirmation.');
+    }).on('blur', function () { clearHelp($(this)); });
+
+    // Address fields
+    $('#address').on('focus', function () { showHelp($(this), 'Street address (e.g., 123 Main St)'); }).on('blur', function () { clearHelp($(this)); });
+    $('#address2').on('focus', function () { showHelp($(this), 'Apt, suite, unit, building, floor (optional)'); }).on('blur', function () { clearHelp($(this)); });
+    $('#city').on('focus', function () { showHelp($(this), 'Enter the city'); }).on('blur', function () { clearHelp($(this)); });
+    $('#state').on('focus', function () { showHelp($(this), 'Select your state'); }).on('blur', function () { clearHelp($(this)); });
+    $('#zip').on('focus', function () { showHelp($(this), 'Enter 5-digit ZIP or ZIP+4'); }).on('blur', function () { clearHelp($(this)); });
+
+    // Payment fields
+    $('#card-type').on('focus', function () { showHelp($(this), 'Select the card brand'); }).on('blur', function () { clearHelp($(this)); });
+    $('#card-number').on('focus', function () { showHelp($(this), 'Enter card number without spaces'); }).on('blur', function () { clearHelp($(this)); });
+    $('#card-holder').on('focus', function () { showHelp($(this), 'Name exactly as on card'); }).on('blur', function () { clearHelp($(this)); });
+    $('#exp-month').on('focus', function () { showHelp($(this), 'Expiration month'); }).on('blur', function () { clearHelp($(this)); });
+    $('#exp-year').on('focus', function () { showHelp($(this), 'Expiration year'); }).on('blur', function () { clearHelp($(this)); });
 
 });

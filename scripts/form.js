@@ -20,6 +20,19 @@ $(document).ready(function () {
         }
     });
 
+    // Validate confirm email on focusout
+    $('#confirm-email').on('focusout', function () {
+        var val = $(this).val();
+        var emailVal = $('#email').val();
+        if (val !== emailVal) {
+            $("#invalidConfirmEmail").text("Emails do not match");
+        } else {
+            $("#invalidConfirmEmail").text("");
+        }
+    });
+
+    $('#confirm-email').on('focus', function () { $("#invalidConfirmEmail").text(""); })
+
     // Clear email error on focus
     $('#email').on('focus', function () {
         $("#invalidEmail").text("");
@@ -63,6 +76,83 @@ $(document).ready(function () {
             error = true;
         }
 
+        // confirm email match
+        var confirmEmailVal = $.trim($('#confirm-email').val());
+        if (emailVal !== confirmEmailVal) {
+            $("#invalidConfirmEmail").text("Emails do not match");
+            error = true;
+        }
+
+        // password checks
+        var pwd = $.trim($('#password').val());
+        var pwdConfirm = $.trim($('#confirm-password').val());
+        if (!pwd) {
+            $("#invalidPassword").text('Missing Input *'); error = true;
+        } else if (pwd.length < 8) {
+            $("#invalidPassword").text('Password must be at least 8 characters'); error = true;
+        } else {
+            $("#invalidPassword").text('');
+        }
+        if (pwd !== pwdConfirm) {
+            $("#invalidConfirmPassword").text('Passwords do not match'); error = true;
+        } else {
+            if ($('#confirm-password').val()) $("#invalidConfirmPassword").text('');
+        }
+
+        // zip code basic check (5 digits or 5-4)
+        var zip = $.trim($('#zip').val());
+        if (zip && !zip.match(/^\d{5}(-\d{4})?$/)) {
+            $("#invalidZip").text('Invalid zip code'); error = true;
+        }
+
+        // card number basic numeric check and Luhn
+        var cardNumber = $.trim($('#card-number').val()).replace(/\s+/g, '');
+        if (!cardNumber.match(/^\d{13,19}$/)) {
+            $("#invalidCardNumber").text('Invalid card number'); error = true;
+        } else {
+            // Luhn check
+            function luhnCheck(num) {
+                var sum = 0; var alt = false;
+                for (var i = num.length - 1; i >= 0; i--) {
+                    var n = parseInt(num.charAt(i), 10);
+                    if (alt) {
+                        n *= 2;
+                        if (n > 9) n -= 9;
+                    }
+                    sum += n;
+                    alt = !alt;
+                }
+                return (sum % 10) === 0;
+            }
+            if (!luhnCheck(cardNumber)) {
+                $("#invalidCardNumber").text('Invalid card number'); error = true;
+            } else {
+                $("#invalidCardNumber").text('');
+            }
+        }
+
+        // card holder
+        if (!$.trim($('#card-holder').val())) { $("#invalidCardHolder").text('Missing Input *'); error = true; } else { $("#invalidCardHolder").text(''); }
+
+        // expiration date check
+        var expMonth = parseInt($('#exp-month').val(), 10);
+        var expYear = parseInt($('#exp-year').val(), 10);
+        if (!expMonth || !expYear) {
+            if (!expMonth) $("#invalidExpMonth").text('Select month');
+            if (!expYear) $("#invalidExpYear").text('Select year');
+            error = true;
+        } else {
+            var now = new Date();
+            var thisMonth = now.getMonth() + 1;
+            var thisYear = now.getFullYear();
+            if (expYear < thisYear || (expYear === thisYear && expMonth < thisMonth)) {
+                $("#invalidExpYear").text('Card expired'); error = true;
+            } else {
+                $("#invalidExpMonth").text(''); $("#invalidExpYear").text('');
+            }
+        }
+
+
         if (error) {
             e.preventDefault();
             return false;
@@ -77,6 +167,18 @@ $(document).ready(function () {
         $(".help").remove();
     })
 
+});
+
+// Populate expiration year options on load (next 12 years)
+$(function () {
+    var $year = $('#exp-year');
+    if ($year && $year.length) {
+        var now = new Date();
+        var y = now.getFullYear();
+        for (var i = 0; i < 12; i++) {
+            $year.append($('<option>', { value: y + i, text: y + i }));
+        }
+    }
 });
 
 
