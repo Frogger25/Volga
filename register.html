@@ -49,7 +49,7 @@
         <main>
             <section class="register-section">
                 <h2>Create an Account</h2>
-                <form id="regForm" action="submit_registration.html" method="post" class="register-form">
+                <form id="regForm" action="javascript:void(0)" method="post" class="register-form">
                     <fieldset>
                         <legend>Account ID &amp; Password</legend>
                         <label for="email" class="required">Email:</label>
@@ -202,6 +202,15 @@
                 </form>
             </section>
         </main>
+        <!-- Success modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Success!</h2>
+                <p>Your form has been submitted successfully.</p>
+                <button class="modal-close-btn">Close</button>
+            </div>
+        </div>
         <footer>
             <p>&copy; 2025 Volga. All rights reserved.</p>
         </footer>

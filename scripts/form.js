@@ -183,14 +183,32 @@ $(document).ready(function () {
             return false;
         }
 
-        // allow normal submit when no errors
-        return true;
+        // Show success modal instead of normal submit
+        e.preventDefault();
+        var $modal = $('#successModal');
+        if ($modal && $modal.length) {
+            $modal.addClass('show');
+        }
+        return false;
     });
 
     $("#regForm").on('reset', function (e) {
         $(".invalid").text("");
         $(".help").remove();
     })
+
+    // Modal close handlers
+    $('.close-modal, .modal-close-btn').on('click', function () {
+        var $modal = $('#successModal');
+        if ($modal) $modal.removeClass('show');
+    });
+
+    // Close modal if clicking outside the content
+    $('#successModal').on('click', function (e) {
+        if (e.target === this) {
+            $(this).removeClass('show');
+        }
+    });
 
 });
 
