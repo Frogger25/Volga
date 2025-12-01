@@ -232,3 +232,10 @@ main{
     padding: 0 8px;
     font-weight: 700;
 }
+
+/* Show a red asterisk for labels marked required */
+.register-form label.required::after{
+    content: " *";
+    color: #c82333;
+    margin-left: 4px;
+}
